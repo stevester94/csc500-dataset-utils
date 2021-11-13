@@ -39,6 +39,10 @@ RUN cd gnuradio/build && make install && ldconfig
 
 # Install jupyter
 RUN apt install -y python3 python3-pip
-RUN pip install notebook easydict matplotlib scipy numpy sklearn
+RUN pip install notebook easydict matplotlib scipy numpy sklearn mapper
+
+RUN apt install -y vim libavcodec-dev libavformat-dev
+
+RUN pip install cmappertools
 
 RUN mkdir /home/steven && chmod 777 /home/steven

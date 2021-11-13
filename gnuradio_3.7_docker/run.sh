@@ -6,6 +6,3 @@ docker run \
 -v $(realpath ..):/work \
 gnuradio-image \
 jupyter-notebook --notebook-dir=/work
-#bash
-#jupyter-notebook --config="/workspace/jupyter_notebook_config.py"
-#start.sh jupyter notebook --NotebookApp.token=''
