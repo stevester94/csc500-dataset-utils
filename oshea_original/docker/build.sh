@@ -1,1 +1,1 @@
-docker build -t gnuradio-3.7-image .
+docker build -t gnuradio-3.7-oshea-image .
