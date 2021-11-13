@@ -4,5 +4,5 @@ docker run \
 -v /etc/passwd:/etc/passwd \
 -u $(id -u):$(id -g) \
 -v $(realpath ..):/work \
-gnuradio-image \
+gnuradio-3.7-image \
 bash

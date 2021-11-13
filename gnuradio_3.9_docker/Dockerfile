@@ -29,7 +29,7 @@ RUN git clone --recursive https://github.com/gnuradio/volk.git && cd volk \
     && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 ../ \
     && make -j8 && make install && ldconfig
 
-RUN git clone https://github.com/gnuradio/gnuradio.git && cd gnuradio \
+RUN git clone https://github.com/gnuradio/gnuradio.git && cd gnuradio && git checkout maint-3.9 \
     && mkdir build && cd build \
     && cmake -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 ../ \
     && make -j8 
