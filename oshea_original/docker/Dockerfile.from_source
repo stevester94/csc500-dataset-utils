@@ -1,0 +1,34 @@
+FROM ubuntu:18.04
+
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt update
+
+RUN apt install -y cmake git g++ libboost-all-dev python-dev python-mako \
+python-numpy python-wxgtk3.0 python-sphinx python-cheetah swig libzmq3-dev \
+libfftw3-dev libgsl-dev libcppunit-dev doxygen libcomedi-dev libqt4-opengl-dev \
+python-qt4 libqwt-dev libsdl1.2-dev libusb-1.0-0-dev python-gtk2 python-lxml \
+pkg-config python-sip-dev 
+
+RUN apt install -y pybind11-dev python3-matplotlib libsndfile1-dev libiio-dev libad9361-dev libsoapysdr-dev soapysdr-tools
+
+WORKDIR /build
+
+RUN apt install -y mako
+
+RUN git clone https://github.com/gnuradio/gnuradio.git && cd gnuradio && git checkout maint-3.7 \
+    && git submodule update --init --recursive \
+    && mkdir build && cd build \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 ../ \
+    && make -j8 
+
+# gnuradio fails "qa_qtgui"
+RUN cd gnuradio/build && make test && make install && ldconfig
+
+# Install jupyter
+#RUN apt install -y python3 python3-pip vim libavcodec-dev libavformat-dev
+#RUN pip install notebook easydict matplotlib scipy numpy sklearn mapper cmappertools
+
+RUN mkdir /home/steven && chmod 777 /home/steven
+WORKDIR /work
