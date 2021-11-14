@@ -28,4 +28,4 @@ RUN cd gr-mediatools/build && cmake ../ && make -j8 && make install && ldconfig
 RUN git clone https://github.com/gr-vt/gr-mapper.git && cd gr-mapper && mkdir build
 RUN cd gr-mapper/build && cmake .. && make -j8 && make install && ldconfig
 
-RUN mkdir -p /home/steven/.gnuradio && chmod 777 /home/steven/.gnuradio 
+RUN mkdir -p /home/steven/.gnuradio && chmod 777 /home/steven/ && chmod 777 /home/steven/.gnuradio
