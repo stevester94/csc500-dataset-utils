@@ -1,6 +1,6 @@
 docker run \
 -ti --rm --network=host \
---name gnuradio-cont \
+--name oshea-generator \
 -v /etc/passwd:/etc/passwd \
 -u $(id -u):$(id -g) \
 -v $(realpath ..):/work \
