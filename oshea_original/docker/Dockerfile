@@ -29,3 +29,5 @@ RUN git clone https://github.com/gr-vt/gr-mapper.git && cd gr-mapper && mkdir bu
 RUN cd gr-mapper/build && cmake .. && make -j8 && make install && ldconfig
 
 RUN mkdir -p /home/steven/.gnuradio && chmod 777 /home/steven/ && chmod 777 /home/steven/.gnuradio
+
+RUN apt install -y vim sudo
